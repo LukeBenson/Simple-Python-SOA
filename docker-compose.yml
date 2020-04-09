@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  application1:
+    image: 127.0.0.1:4999/application1
+    build: ./application1
+    ports:
+      - target: 5000
+        published: 5000
+        protocol: tcp
+  application2:
+    image: 127.0.0.1:4999/application2
+    build: ./application2
+    ports:
+      - target: 5001
+        published: 5001
+        protocol: tcp
