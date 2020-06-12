@@ -1,16 +1,20 @@
 version: '3.7'
 services:
   application1:
-    image: 127.0.0.1:4999/application1
+    image: lukebenson1/app1:${APP_VERSION}
     build: ./application1
     ports:
       - target: 5000
         published: 5000
         protocol: tcp
+    deploy:
+      replicas: 2
   application2:
-    image: 127.0.0.1:4999/application2
+    image: lukebenson1/app2:${APP_VERSION}
     build: ./application2
     ports:
       - target: 5001
         published: 5001
         protocol: tcp
+    deploy:
+      replicas: 2
