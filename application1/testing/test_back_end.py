@@ -1,4 +1,5 @@
 import unittest
+import requests
 
 from flask import url_for
 from flask_testing import TestCase
@@ -34,4 +35,11 @@ class TestViews(TestBase):
         Test that homepage is accessible without login
         """
         response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_animalpage_view(self):
+        """
+        Test that the animal page is accessible without login
+        """
+        response = self.client.get(url_for('animal'))
         self.assertEqual(response.status_code, 200)
