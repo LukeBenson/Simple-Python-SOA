@@ -1,1 +1,5 @@
 Flask==1.1.1
+requests
+Werkzeug==0.16.1
+flask-testing
+pytest-cov
