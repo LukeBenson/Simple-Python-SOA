@@ -16,12 +16,6 @@ class TestBase(TestCase):
         # pass in configurations for test database
         return app
 
-class FakeResponseOne(object):
-    text = "dog"
-
-class FakeResponseTwo(object):
-    text = "woof"
-
 class TestViews(TestBase):
 
     def test_homepage_view(self):
@@ -37,10 +31,8 @@ class TestViews(TestBase):
         """
         with patch('requests.get') as g:
             with patch('requests.post') as p:
-                animal = FakeResponseOne()
-                g.return_value = animal
-                noise = FakeResponseTwo()
-                p.return_value = noise
+                g.return_value.text = "dog"
+                p.return_value.text = "woof"
 
                 response = self.client.get(url_for('animal'))
                 self.assertIn(b'dog', response.data)
